@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.max.finitestatemachiensmax.Activities.MainActivity">
+
+<LinearLayout
+    android:layout_margin="20dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+   <LinearLayout
+    android:layout_margin="10dp"
+    android:id="@+id/text_state_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/state"/>
+    <TextView
+        android:id="@+id/state_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"/>
+</LinearLayout>
+    <LinearLayout
+        android:layout_margin="10dp"
+        android:id="@+id/color_states_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/armed_text_view"
+            android:layout_width="@dimen/item_width"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/colorRed"
+            android:visibility="invisible"
+            android:text="@string/armed"/>
+        <TextView
+            android:layout_marginTop="5dp"
+            android:id="@+id/disarmed_text_view"
+            android:layout_width="@dimen/item_width"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:background="@color/colorGreen"
+            android:text="@string/disarmed"
+            android:visibility="invisible"
+            android:layout_gravity="center_horizontal"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/lock_button"
+        android:text="@string/lock_button_text"
+        android:layout_width="@dimen/item_width"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"/>
+    <Button
+        android:id="@+id/unlock_button"
+        android:text="@string/unlock_button_text"
+        android:layout_width="@dimen/item_width"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"/>
+    <Button
+        android:id="@+id/lockx2_button"
+        android:text="@string/lockx2_button_text"
+        android:layout_width="@dimen/item_width"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"/>
+    <Button
+        android:id="@+id/unlockx2_button"
+        android:text="@string/unlockx2_button_text"
+        android:layout_width="@dimen/item_width"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"/>
+</LinearLayout>
+
+</RelativeLayout>
