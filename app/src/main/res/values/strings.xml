@@ -9,7 +9,7 @@
     <string name="disarmed">Disarmed</string>
     <string-array name="alarms_state">
         <item>AlarmArmed_AllLocked</item>
-        <item>AlarmDisarmed_AllLocke</item>
+        <item>AlarmDisarmed_AllLocked</item>
         <item>AlarmDisarmed_AllUnlocked</item>
         <item>AlarmDisarmed_DriverUnlocked</item>
     </string-array>
