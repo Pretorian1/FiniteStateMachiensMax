@@ -33,11 +33,11 @@ public class StateUtilsTest {
 
     FiniteMachineState finiteMachineState;
 
- //   @Mock
+
     TextView stateTextView;
-  //  @Mock
+
     TextView armedTextView;
-  //  @Mock
+
     TextView disarmedTextView;
 
     @Before
@@ -51,15 +51,11 @@ public class StateUtilsTest {
         finiteMachineState.setArmed(false);
     }
 
-    /*  <item>AlarmArmed_AllLocked</item>
-        <item>AlarmDisarmed_AllLocke</item>
-        <item>AlarmDisarmed_AllUnlocked</item>
-        <item>AlarmDisarmed_DriverUnlocked</item>*/
+
 
     @Test
     public void shouldDefineLockButtonState(){
-       // when(finiteMachineState.setState(statesArray[1]).then;
-      /*  when(finiteMachineState.getState()).thenReturn(statesArray[1]);*/
+
         finiteMachineState.setState(statesArray[2]);
         StateUtils.defineLockButtonState(finiteMachineState,statesArray);
         assertEquals(finiteMachineState.getState(),statesArray[1]);

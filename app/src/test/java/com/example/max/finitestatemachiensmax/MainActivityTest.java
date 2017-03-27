@@ -14,6 +14,8 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
+import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
@@ -26,6 +28,7 @@ import static junit.framework.Assert.assertNull;
 import static junit.framework.Assert.assertTrue;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
+import static org.mockito.Mockito.when;
 
 /**
  * Created by Max on 26.03.2017.
@@ -54,6 +57,7 @@ public class MainActivityTest {
 
     private String [] statesArray;
 
+    @Mock
     FiniteMachineState finiteMachineState;
 
     @Before
@@ -67,8 +71,8 @@ public class MainActivityTest {
         unLockButton = (Button) activity.findViewById(R.id.unlock_button);
         lockx2Button = (Button) activity.findViewById(R.id.lockx2_button);
         unLockx2Button = (Button) activity.findViewById(R.id.unlockx2_button);
-        finiteMachineState = FiniteMachineState.getFiniteMachineState(statesArray[2]);
-        finiteMachineState.setArmed(false);
+       // finiteMachineState = FiniteMachineState.getFiniteMachineState(statesArray[2]);
+     //   finiteMachineState.setArmed(false);
     }
     @Test
     public void shouldDefineDefaultStateTextViewContent() {
@@ -109,6 +113,15 @@ public class MainActivityTest {
         assertEquals(statesArray[2], stateTextView.getText().toString());
         assertEquals(View.INVISIBLE, armedTextView.getVisibility());
         assertEquals(View.VISIBLE, disarmedTextView.getVisibility());
+    }
+
+    @Test
+    public void setFiniteMachineStateMock(){
+        finiteMachineState = Mockito.mock(FiniteMachineState.class);
+        Mockito.when(finiteMachineState.getState()).thenReturn("Some state must be here");
+        Mockito.when(finiteMachineState.isArmed()).thenReturn(true);
+        assertEquals(finiteMachineState.getState(),"Some state must be here");
+        assertTrue(finiteMachineState.isArmed());
     }
 
 }
