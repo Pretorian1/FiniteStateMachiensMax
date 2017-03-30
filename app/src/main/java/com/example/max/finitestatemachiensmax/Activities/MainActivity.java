@@ -8,9 +8,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.max.finitestatemachiensmax.Objects.FiniteMachineState;
+import com.example.max.finitestatemachiensmax.Objects.StatesFromJSON;
 import com.example.max.finitestatemachiensmax.R;
+import com.example.max.finitestatemachiensmax.Utils.StatesMachineJsonLoader;
 import com.example.max.finitestatemachiensmax.Utils.StateUtils;
-import com.google.firebase.crash.FirebaseCrash;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -28,9 +29,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private Button unLockx2Button;
 
-    private String [] statesArray;
+    //private String [] statesArray;
 
     private FiniteMachineState finiteMachineState;
+
+    private StatesFromJSON statesFromJSON;
 
 
 
@@ -40,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
     //    FirebaseCrash.report(new Exception("My first Android non-fatal error"));//crash reporting
         initViews();
+      statesFromJSON = StatesMachineJsonLoader.convertJSONStatesToStatesFromJSON(this, R.raw.states_of_machine);
     }
 
     @Override
@@ -47,22 +51,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (view.getId()) {
             case R.id.lock_button:
                 Toast.makeText(this,"Lock pressed",Toast.LENGTH_SHORT).show();
-                StateUtils.defineLockButtonState(finiteMachineState,statesArray);
+                StateUtils.defineLockButtonState(finiteMachineState,statesFromJSON);
                 StateUtils.setStateDependentViews(finiteMachineState,stateTextView, armedTextView, disarmedTextView);
                 break;
             case R.id.unlock_button:
                 Toast.makeText(this,"UnLock pressed",Toast.LENGTH_SHORT).show();
-                StateUtils.defineUnLockButtonState(finiteMachineState,statesArray);
+                StateUtils.defineUnLockButtonState(finiteMachineState,statesFromJSON);
                 StateUtils.setStateDependentViews(finiteMachineState,stateTextView, armedTextView, disarmedTextView);
                 break;
             case R.id.lockx2_button:
                 Toast.makeText(this,"Lockx2 pressed",Toast.LENGTH_SHORT).show();
-                StateUtils.defineLockx2ButtonState(finiteMachineState,statesArray);
+                StateUtils.defineLockx2ButtonState(finiteMachineState,statesFromJSON);
                 StateUtils.setStateDependentViews(finiteMachineState,stateTextView, armedTextView, disarmedTextView);
                 break;
             case R.id.unlockx2_button:
                 Toast.makeText(this,"UnLockx2 pressed",Toast.LENGTH_SHORT).show();
-                StateUtils.defineUnLockx2ButtonState(finiteMachineState,statesArray);
+                StateUtils.defineUnLockx2ButtonState(finiteMachineState,statesFromJSON);
                 StateUtils.setStateDependentViews(finiteMachineState,stateTextView, armedTextView, disarmedTextView);
                 break;
         }
@@ -76,8 +80,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         lockx2Button = (Button) findViewById(R.id.lockx2_button);
         unLockx2Button = (Button) findViewById(R.id.unlockx2_button);
 
-        statesArray = getResources().getStringArray(R.array.alarms_state);
-        finiteMachineState = FiniteMachineState.getFiniteMachineState(statesArray[2]);//AlarmDisarmed_AllUnlocked default
+      //  statesArray = getResources().getStringArray(R.array.alarms_state);
+        finiteMachineState = FiniteMachineState.getFiniteMachineState(statesFromJSON.getAlarmdisarmedAllUnlocked());
         finiteMachineState.setArmed(false);
         StateUtils.setStateDependentViews(finiteMachineState,stateTextView, armedTextView, disarmedTextView);
         lockButton.setOnClickListener(this);

@@ -14,8 +14,6 @@ public class FiniteMachineState {
 
     private String state;
 
-    private static String [] statesArray;
-
     private boolean isArmed;
 
     private FiniteMachineState(String state){

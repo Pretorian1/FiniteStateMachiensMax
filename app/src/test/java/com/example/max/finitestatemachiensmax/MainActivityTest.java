@@ -7,7 +7,6 @@ import android.widget.TextView;
 
 import com.example.max.finitestatemachiensmax.Activities.MainActivity;
 import com.example.max.finitestatemachiensmax.Objects.FiniteMachineState;
-import com.google.firebase.FirebaseApp;
 
 import org.junit.Before;
 import org.junit.FixMethodOrder;
@@ -22,13 +21,9 @@ import org.robolectric.annotation.Config;
 import org.robolectric.shadows.ShadowToast;
 
 import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertFalse;
-import static junit.framework.Assert.assertNotNull;
-import static junit.framework.Assert.assertNull;
 import static junit.framework.Assert.assertTrue;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
-import static org.mockito.Mockito.when;
 
 /**
  * Created by Max on 26.03.2017.
@@ -71,8 +66,6 @@ public class MainActivityTest {
         unLockButton = (Button) activity.findViewById(R.id.unlock_button);
         lockx2Button = (Button) activity.findViewById(R.id.lockx2_button);
         unLockx2Button = (Button) activity.findViewById(R.id.unlockx2_button);
-       // finiteMachineState = FiniteMachineState.getFiniteMachineState(statesArray[2]);
-     //   finiteMachineState.setArmed(false);
     }
     @Test
     public void shouldDefineDefaultStateTextViewContent() {

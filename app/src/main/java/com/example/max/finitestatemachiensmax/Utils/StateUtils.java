@@ -4,6 +4,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.max.finitestatemachiensmax.Objects.FiniteMachineState;
+import com.example.max.finitestatemachiensmax.Objects.StatesFromJSON;
 
 /**
  * Created by Max on 26.03.2017.
@@ -11,51 +12,35 @@ import com.example.max.finitestatemachiensmax.Objects.FiniteMachineState;
 
 public class StateUtils {
 
-    public static void defineLockButtonState(FiniteMachineState finiteMachineState, String [] statesArray){
+    public static void defineLockButtonState(FiniteMachineState finiteMachineState, StatesFromJSON statesFromJSON){
 
-     /*   <item>AlarmArmed_AllLocked</item>
-        <item>AlarmDisarmed_AllLocke</item>
-        <item>AlarmDisarmed_AllUnlocked</item>
-        <item>AlarmDisarmed_DriverUnlocked</item>*/
-        if(!statesArray[0].equals(finiteMachineState.getState())){
-              finiteMachineState.setState(statesArray[1]);
+        if(!statesFromJSON.getAlarmArmedAllLocked().equals(finiteMachineState.getState())){
+              finiteMachineState.setState(statesFromJSON.getAlarmDisarmedAllLocked());
               finiteMachineState.setArmed(false);
         }
 
     }
 
-    public static void defineLockx2ButtonState(FiniteMachineState finiteMachineState, String [] statesArray){
+    public static void defineLockx2ButtonState(FiniteMachineState finiteMachineState, StatesFromJSON statesFromJSON){
 
-     /*   <item>AlarmArmed_AllLocked</item>
-        <item>AlarmDisarmed_AllLocke</item>
-        <item>AlarmDisarmed_AllUnlocked</item>
-        <item>AlarmDisarmed_DriverUnlocked</item>*/
-        finiteMachineState.setState(statesArray[0]);
+        finiteMachineState.setState(statesFromJSON.getAlarmArmedAllLocked());
         finiteMachineState.setArmed(true);
 
     }
 
-    public static void defineUnLockButtonState(FiniteMachineState finiteMachineState, String [] statesArray){
+    public static void defineUnLockButtonState(FiniteMachineState finiteMachineState, StatesFromJSON statesFromJSON){
 
-     /*   <item>AlarmArmed_AllLocked</item>
-        <item>AlarmDisarmed_AllLocke</item>
-        <item>AlarmDisarmed_AllUnlocked</item>
-        <item>AlarmDisarmed_DriverUnlocked</item>*/
-        if(!statesArray[2].equals(finiteMachineState.getState())){
-            finiteMachineState.setState(statesArray[3]);
+        if(!statesFromJSON.getAlarmdisarmedAllUnlocked().equals(finiteMachineState.getState())){
+            finiteMachineState.setState(statesFromJSON.getAlarmDisarmedDriverunLocked());
             finiteMachineState.setArmed(false);
         }
 
     }
 
-    public static void defineUnLockx2ButtonState(FiniteMachineState finiteMachineState, String [] statesArray){
+    public static void defineUnLockx2ButtonState(FiniteMachineState finiteMachineState, StatesFromJSON statesFromJSON){
 
-     /*   <item>AlarmArmed_AllLocked</item>
-        <item>AlarmDisarmed_AllLocke</item>
-        <item>AlarmDisarmed_AllUnlocked</item>
-        <item>AlarmDisarmed_DriverUnlocked</item>*/
-        if(!statesArray[3].equals(finiteMachineState.getState())){
-            finiteMachineState.setState(statesArray[2]);
+        if(!statesFromJSON.getAlarmDisarmedDriverunLocked().equals(finiteMachineState.getState())){
+            finiteMachineState.setState(statesFromJSON.getAlarmdisarmedAllUnlocked());
             finiteMachineState.setArmed(false);
         }
     }
