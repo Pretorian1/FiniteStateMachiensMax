@@ -42,8 +42,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     //    FirebaseCrash.report(new Exception("My first Android non-fatal error"));//crash reporting
+        statesFromJSON = StatesMachineJsonLoader.convertJSONStatesToStatesFromJSON(this, R.raw.states_of_machine);
         initViews();
-      statesFromJSON = StatesMachineJsonLoader.convertJSONStatesToStatesFromJSON(this, R.raw.states_of_machine);
     }
 
     @Override
